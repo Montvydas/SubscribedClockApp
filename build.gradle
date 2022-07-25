@@ -1,0 +1,48 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.2'
+	id 'io.spring.dependency-management' version '1.0.12.RELEASE'
+	id 'java'
+}
+
+group = 'com.subscribed.clock'
+version = '0.0.1'
+sourceCompatibility = '18'
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+jar {
+	manifest {
+		attributes 'Main-Class': 'com.subscribed.clock.SubscribedClockApp'
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.apache.httpcomponents:httpclient:4.5.13'
+	implementation 'commons-validator:commons-validator:1.7'
+	implementation 'com.google.code.gson:gson:2.9.0'
+	implementation 'com.svix:svix:0.59.1'
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+	implementation 'jakarta.xml.bind:jakarta.xml.bind-api:4.0.0'
+	implementation 'org.glassfish.jaxb:jaxb-runtime:4.0.0'
+	implementation 'javax.xml.bind:jaxb-api:2.3.1'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	compileOnly 'org.projectlombok:lombok:1.18.24'
+	annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+	testCompileOnly 'org.projectlombok:lombok:1.18.24'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
